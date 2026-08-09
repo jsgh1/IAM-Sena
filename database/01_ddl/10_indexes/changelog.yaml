@@ -1,0 +1,64 @@
+databaseChangeLog:
+  - changeSet:
+      id: abdff95b-c529-4a22-897c-3b12f67c2f76
+      author: Karen Holguin
+      labels: "HU-05-dev,ddl,base,indexes"
+      comment: Creates indexes for identity domain.
+      changes:
+        - sqlFile:
+            path: 001_create_indexes_identity.sql
+            relativeToChangelogFile: true
+            stripComments: false
+      rollback:
+        - sqlFile:
+            path: ../../05_rollbacks/01_ddl/10_indexes/001_create_indexes_identity.rollback.sql
+            relativeToChangelogFile: true
+            stripComments: false
+
+  - changeSet:
+      id: 4df7be5a-4746-4879-a9ea-6bf7e93a3e06
+      author: Karen Holguin
+      labels: "HU-05-dev,ddl,base,indexes"
+      comment: Creates indexes for rbac domain.
+      changes:
+        - sqlFile:
+            path: 003_create_indexes_rbac.sql
+            relativeToChangelogFile: true
+            stripComments: false
+      rollback:
+        - sqlFile:
+            path: ../../05_rollbacks/01_ddl/10_indexes/003_create_indexes_rbac.rollback.sql
+            relativeToChangelogFile: true
+            stripComments: false
+
+  - changeSet:
+      id: a7f43cf7-c653-4a98-8ce9-f3bdd840c050
+      author: Karen Holguin
+      labels: "HU-05-dev,ddl,base,indexes"
+      comment: Creates indexes for session domain.
+      changes:
+        - sqlFile:
+            path: 004_create_indexes_session.sql
+            relativeToChangelogFile: true
+            stripComments: false
+      rollback:
+        - sqlFile:
+            path: ../../05_rollbacks/01_ddl/10_indexes/004_create_indexes_session.rollback.sql
+            relativeToChangelogFile: true
+            stripComments: false
+
+  - changeSet:
+      id: 9b27356c-31de-494e-aff5-b05bafaf0f39
+      author: Karen Holguin
+      labels: "HU-05-dev,ddl,base,indexes"
+      comment: Creates indexes for identity_audit domain.
+      changes:
+        - sqlFile:
+            path: 005_create_indexes_identity_audit.sql
+            relativeToChangelogFile: true
+            stripComments: false
+      rollback:
+        - sqlFile:
+            path: ../../05_rollbacks/01_ddl/10_indexes/005_create_indexes_identity_audit.rollback.sql
+            relativeToChangelogFile: true
+            stripComments: false
