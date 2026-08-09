@@ -1,0 +1,2 @@
+
+DROP INDEX IF EXISTS identity_audit.ix_audit_login_email_attempted_attempted_at;

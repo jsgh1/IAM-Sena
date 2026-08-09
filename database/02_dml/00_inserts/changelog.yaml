@@ -1,0 +1,25 @@
+databaseChangeLog:
+  - changeSet:
+      id: seed-rbac-001
+      author: jesus-gonzalez
+      labels: "seed,rbac"
+      comment: Seed RBAC (modules, features, roles, role_feature) desde rbac-design.md
+      changes:
+        - sqlFile:
+            path: 001_seed_rbac.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: false
+      rollback:
+        - sqlFile:
+            path: ../../05_rollbacks/02_dml/00_inserts/001_seed_rbac.rollback.sql
+            relativeToChangelogFile: true
+  - changeSet:
+      id: seed-demo-iam-001
+      author: jesus-gonzalez
+      labels: "seed,demo"
+      comment: Demo - usuario SYSTEM_ADMIN inicial y su rol
+      changes:
+        - sqlFile: {path: 002_seed_demo.sql, relativeToChangelogFile: true, splitStatements: true, stripComments: false}
+      rollback:
+        - sql: {sql: "DELETE FROM rbac.user_role WHERE user_id='c0000000-0000-0000-0000-000000000001'; DELETE FROM identity.\"user\" WHERE id='c0000000-0000-0000-0000-000000000001';"}

@@ -1,0 +1,82 @@
+databaseChangeLog:
+  - changeSet:
+      id: 8f88639e-9735-4af0-a881-83b2bb6e26d0
+      author: Kevin Stiven Lopez
+      labels: "HU-06-dev,ddl,base,alter"
+      comment: Adds foreign key constraints for rbac_catalog domain.
+      changes:
+        - sqlFile:
+            path: 002_add_alter_rbac_catalog.sql
+            relativeToChangelogFile: true
+            stripComments: false
+      rollback:
+        - sqlFile:
+            path: ../../05_rollbacks/01_ddl/04_alter/002_add_alter_rbac_catalog.rollback.sql
+            relativeToChangelogFile: true
+            stripComments: false
+
+  - changeSet:
+      id: 7ff531a9-fac0-418c-8c65-e7c8c8476ee1
+      author: Kevin Stiven Lopez
+      labels: "HU-06-dev,ddl,base,alter"
+      comment: Adds foreign key constraints for rbac domain.
+      changes:
+        - sqlFile:
+            path: 003_add_alter_rbac.sql
+            relativeToChangelogFile: true
+            stripComments: false
+      rollback:
+        - sqlFile:
+            path: ../../05_rollbacks/01_ddl/04_alter/003_add_alter_rbac.rollback.sql
+            relativeToChangelogFile: true
+            stripComments: false
+
+  - changeSet:
+      id: 6db1319d-6fb3-4955-bda9-4835a8f90caf
+      author: Kevin Stiven Lopez
+      labels: "HU-06-dev,ddl,base,alter"
+      comment: Adds foreign key constraints for session domain.
+      changes:
+        - sqlFile:
+            path: 004_add_alter_session.sql
+            relativeToChangelogFile: true
+            stripComments: false
+      rollback:
+        - sqlFile:
+            path: ../../05_rollbacks/01_ddl/04_alter/004_add_alter_session.rollback.sql
+            relativeToChangelogFile: true
+            stripComments: false
+
+  - changeSet:
+      id: 6215e308-3b7b-4cda-968d-61eb2c4c6095
+      author: Kevin Stiven Lopez
+      labels: "HU-06-dev,ddl,base,alter"
+      comment: Adds foreign key constraints for identity_audit domain.
+      changes:
+        - sqlFile:
+            path: 005_add_alter_identity_audit.sql
+            relativeToChangelogFile: true
+            stripComments: false
+      rollback:
+        - sqlFile:
+            path: ../../05_rollbacks/01_ddl/04_alter/005_add_alter_identity_audit.rollback.sql
+            relativeToChangelogFile: true
+            stripComments: false
+  - changeSet:
+      id: quality-fixes-iam-950
+      author: jesus-gonzalez
+      labels: "quality,v2"
+      comment: id DEFAULT gen_random_uuid e indices de FK faltantes
+      changes:
+        - sqlFile: {path: 950_quality_fixes.sql, relativeToChangelogFile: true, splitStatements: true, stripComments: false}
+      rollback:
+        - sql: {sql: "SELECT 1;"}
+  - changeSet:
+      id: quality-polish-iam-951
+      author: jesus-gonzalez
+      labels: "quality,v2,polish"
+      comment: Unicidad de email case-insensitive (lower(email))
+      changes:
+        - sqlFile: {path: 951_quality_polish.sql, relativeToChangelogFile: true, splitStatements: true, stripComments: false}
+      rollback:
+        - sql: {sql: "DROP INDEX IF EXISTS identity.uq_user_email_lower;"}
