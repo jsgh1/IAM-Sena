@@ -1,0 +1,80 @@
+databaseChangeLog:
+  - changeSet:
+      id: d1a403c9-943b-487c-86bf-3d127bf70001
+      author: Karen Holguin
+      labels: "HU-03-dev,ddl,base,schemas"
+      comment: Creates the identity schema for the IAM module.
+      changes:
+        - sqlFile:
+            path: 001_create_schema_identity.sql
+            relativeToChangelogFile: true
+            stripComments: false
+      rollback:
+        - sqlFile:
+            path: ../../05_rollbacks/01_ddl/01_schemas/001_create_schema_identity.rollback.sql
+            relativeToChangelogFile: true
+            stripComments: false
+
+  - changeSet:
+      id: d1a403c9-943b-487c-86bf-3d127bf70002
+      author: Karen Holguin
+      labels: "HU-03-dev,ddl,base,schemas"
+      comment: Creates the rbac_catalog schema for the IAM module.
+      changes:
+        - sqlFile:
+            path: 002_create_schema_rbac_catalog.sql
+            relativeToChangelogFile: true
+            stripComments: false
+      rollback:
+        - sqlFile:
+            path: ../../05_rollbacks/01_ddl/01_schemas/002_create_schema_rbac_catalog.rollback.sql
+            relativeToChangelogFile: true
+            stripComments: false
+
+  - changeSet:
+      id: d1a403c9-943b-487c-86bf-3d127bf70003
+      author: Karen Holguin
+      labels: "HU-03-dev,ddl,base,schemas"
+      comment: Creates the rbac schema for the IAM module.
+      changes:
+        - sqlFile:
+            path: 003_create_schema_rbac.sql
+            relativeToChangelogFile: true
+            stripComments: false
+      rollback:
+        - sqlFile:
+            path: ../../05_rollbacks/01_ddl/01_schemas/003_create_schema_rbac.rollback.sql
+            relativeToChangelogFile: true
+            stripComments: false
+
+  - changeSet:
+      id: d1a403c9-943b-487c-86bf-3d127bf70004
+      author: Karen Holguin
+      labels: "HU-03-dev,ddl,base,schemas"
+      comment: Creates the session schema for the IAM module.
+      changes:
+        - sqlFile:
+            path: 004_create_schema_session.sql
+            relativeToChangelogFile: true
+            stripComments: false
+      rollback:
+        - sqlFile:
+            path: ../../05_rollbacks/01_ddl/01_schemas/004_create_schema_session.rollback.sql
+            relativeToChangelogFile: true
+            stripComments: false
+
+  - changeSet:
+      id: d1a403c9-943b-487c-86bf-3d127bf70005
+      author: Karen Holguin
+      labels: "HU-03-dev,ddl,base,schemas"
+      comment: Creates the identity_audit schema for the IAM module.
+      changes:
+        - sqlFile:
+            path: 005_create_schema_identity_audit.sql
+            relativeToChangelogFile: true
+            stripComments: false
+      rollback:
+        - sqlFile:
+            path: ../../05_rollbacks/01_ddl/01_schemas/005_create_schema_identity_audit.rollback.sql
+            relativeToChangelogFile: true
+            stripComments: false

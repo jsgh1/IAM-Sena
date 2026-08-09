@@ -1,0 +1,80 @@
+databaseChangeLog:
+  - changeSet:
+      id: 10e06945-58ba-4f32-942c-4c12506d3fe9
+      author: Karen Holguin 
+      labels: "HU-04-dev,ddl,base,tables"
+      comment: Creates initial tables for identity domain.
+      changes:
+        - sqlFile:
+            path: 001_create_tables_identity.sql
+            relativeToChangelogFile: true
+            stripComments: false
+      rollback:
+        - sqlFile:
+            path: ../../05_rollbacks/01_ddl/03_tables/001_create_tables_identity.rollback.sql
+            relativeToChangelogFile: true
+            stripComments: false
+
+  - changeSet:
+      id: 1e8ac6b8-eff3-4e36-b39a-fbd320035091
+      author: Karen Holguin 
+      labels: "HU-04-dev,ddl,base,tables"
+      comment: Creates initial tables for rbac_catalog domain.
+      changes:
+        - sqlFile:
+            path: 002_create_tables_rbac_catalog.sql
+            relativeToChangelogFile: true
+            stripComments: false
+      rollback:
+        - sqlFile:
+            path: ../../05_rollbacks/01_ddl/03_tables/002_create_tables_rbac_catalog.rollback.sql
+            relativeToChangelogFile: true
+            stripComments: false
+
+  - changeSet:
+      id: 598a10ad-1206-4d50-bc4d-103eadac9fdd
+      author: Karen Holguin 
+      labels: "HU-04-dev,ddl,base,tables"
+      comment: Creates initial tables for rbac domain.
+      changes:
+        - sqlFile:
+            path: 003_create_tables_rbac.sql
+            relativeToChangelogFile: true
+            stripComments: false
+      rollback:
+        - sqlFile:
+            path: ../../05_rollbacks/01_ddl/03_tables/003_create_tables_rbac.rollback.sql
+            relativeToChangelogFile: true
+            stripComments: false
+
+  - changeSet:
+      id: 484b2470-6dc4-4d47-9231-b0baf9467d95
+      author: Karen Holguin 
+      labels: "HU-04-dev,ddl,base,tables"
+      comment: Creates initial tables for session domain.
+      changes:
+        - sqlFile:
+            path: 004_create_tables_session.sql
+            relativeToChangelogFile: true
+            stripComments: false
+      rollback:
+        - sqlFile:
+            path: ../../05_rollbacks/01_ddl/03_tables/004_create_tables_session.rollback.sql
+            relativeToChangelogFile: true
+            stripComments: false
+
+  - changeSet:
+      id: e01fa266-2c8a-45ec-b082-25d56f447461
+      author: Karen Holguin 
+      labels: "HU-04-dev,ddl,base,tables"
+      comment: Creates initial tables for identity_audit domain.
+      changes:
+        - sqlFile:
+            path: 005_create_tables_identity_audit.sql
+            relativeToChangelogFile: true
+            stripComments: false
+      rollback:
+        - sqlFile:
+            path: ../../05_rollbacks/01_ddl/03_tables/005_create_tables_identity_audit.rollback.sql
+            relativeToChangelogFile: true
+            stripComments: false

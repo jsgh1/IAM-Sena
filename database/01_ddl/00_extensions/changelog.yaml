@@ -1,0 +1,16 @@
+databaseChangeLog:
+  - changeSet:
+      id: fdf7b02c-6eda-4e09-b16c-acbbe203a451
+      author: Karen Holguin
+      labels: "BD-01-dev,ddl,base,extensions"
+      comment: Enables the uuid-ossp extension for the database baseline.
+      changes:
+        - sqlFile:
+            path: 001_enable_uuid_extension.sql
+            relativeToChangelogFile: true
+            stripComments: false
+      rollback:
+        - sqlFile:
+            path: ../../05_rollbacks/01_ddl/00_extensions/001_enable_uuid_extension.rollback.sql
+            relativeToChangelogFile: true
+            stripComments: false
