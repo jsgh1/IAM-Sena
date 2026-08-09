@@ -1,0 +1,10 @@
+databaseChangeLog:
+  - changeSet:
+      id: dcl-grants-iam-001
+      author: jesus-gonzalez
+      labels: "dcl,grants"
+      comment: Grants least-privilege del dominio iam
+      changes:
+        - sqlFile: {path: 001_grants.sql, relativeToChangelogFile: true, splitStatements: true, stripComments: false}
+      rollback:
+        - sql: {sql: "SELECT 1;"}

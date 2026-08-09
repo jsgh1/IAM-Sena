@@ -1,0 +1,10 @@
+databaseChangeLog:
+  - changeSet:
+      id: dcl-roles-iam-001
+      author: jesus-gonzalez
+      labels: "dcl,roles"
+      comment: Roles reader/writer/admin del dominio iam
+      changes:
+        - sqlFile: {path: 001_create_roles.sql, relativeToChangelogFile: true, splitStatements: false, stripComments: false}
+      rollback:
+        - sql: {sql: "DROP ROLE IF EXISTS iam_reader; DROP ROLE IF EXISTS iam_writer; DROP ROLE IF EXISTS iam_admin;"}
