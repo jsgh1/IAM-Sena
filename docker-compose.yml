@@ -9,6 +9,8 @@ services:
       - "${POSTGRES_PORT:-5432}:5432"
     volumes:
       - iam_postgres_data:/var/lib/postgresql/data
+    networks:
+      - iam_network
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-iam} -d ${POSTGRES_DB:-iam}"]
       interval: 5s
@@ -29,6 +31,8 @@ services:
       - --changelog-file=iam-db/changelog/changelog-master.yaml
       - update
     restart: "no"
+    networks:
+      - iam_network
 
   backend:
     build: ./backend
@@ -47,6 +51,8 @@ services:
       BOOTSTRAP_ADMIN_LAST_NAME: ${BOOTSTRAP_ADMIN_LAST_NAME:-Admin}
     expose:
       - "8080"
+    networks:
+      - iam_network
     healthcheck:
       test: ["CMD", "wget", "-q", "--spider", "http://localhost:8080/api/health"]
       interval: 5s
@@ -60,6 +66,12 @@ services:
         condition: service_healthy
     ports:
       - "${APP_PORT:-3000}:80"
+    networks:
+      - iam_network
 
 volumes:
   iam_postgres_data:
+
+networks:
+  iam_network:
+    driver: bridge

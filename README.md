@@ -40,6 +40,45 @@ Requisitos:
 - Docker Desktop / Docker Engine con Docker Compose.
 - Puertos `3000` y `5432` disponibles (se pueden cambiar en `.env`).
 
+### Desplegar en una máquina virtual Linux
+
+1. Instalar Docker Engine y el plugin Compose en la VM:
+
+   ```bash
+   curl -fsSL https://get.docker.com | sh
+   sudo systemctl enable --now docker
+   sudo usermod -aG docker $USER
+   ```
+
+2. Clonar el repositorio:
+
+   ```bash
+   git clone <url-del-repositorio>
+   cd IAM-Sena
+   ```
+
+3. Crear el archivo `.env` desde la plantilla:
+
+   ```bash
+   cp .env.example .env
+   ```
+
+4. Levantar todo:
+
+   ```bash
+   docker compose up --build -d
+   ```
+
+5. Abrir en el navegador de la VM (o de la máquina anfitriona):
+
+   ```text
+   http://localhost:3000
+   ```
+
+   Credenciales demo: `admin@sena.edu.co` / `Admin123*`.
+
+> El servicio `postgres` monta el volumen `iam_postgres_data`, por lo que los datos persisten entre reinicios. Todos los contenedores se comunican a través de la red bridge `iam_network`.
+
 ### 1. Configurar variables
 
 En PowerShell:
@@ -214,7 +253,9 @@ IAM-Sena/
 │   │   └── styles.css
 │   ├── nginx/default.conf
 │   ├── Dockerfile
-│   └── package.json
+│   ├── .dockerignore
+│   ├── package.json
+│   └── package-lock.json
 ├── database/               # Base de datos original recibida
 ├── docs/ 
 │   └── GUIA_API.md
